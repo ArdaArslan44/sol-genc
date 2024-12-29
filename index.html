@@ -5,6 +5,175 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haber Sitesi</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f7faff;
+        }
+
+        /* Header */
+        header {
+            background-color: #5a738e; 
+            color: #ffffff;
+            padding: 10px 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Ana İçerik */
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: space-between;
+        }
+
+        .news-list article {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            overflow: hidden;
+        }
+
+        .news-list article:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .news-list article img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .news-list article h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+            color: #333333;
+            line-height: 1.4;
+        }
+
+        .news-list article p {
+            color: #555555;
+            font-size: 14px;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .news-list article a {
+            color: #5a738e;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .news-list article a:hover {
+            text-decoration: underline;
+        }
+
+        /* Büyük Makale */
+        .large-article {
+            width: 100%;
+            display: flex;
+            gap: 30px;
+            background-color: #eef3f8;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .large-article .img {
+            width: 50%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .large-article h3 {
+            font-size: 24px;
+            color: #333333;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .large-article p {
+            font-size: 16px;
+            color: #555555;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #5a738e;
+            color: #ffffff;
+            margin-top: 20px;
+        }
+
+
+        /* Yeni Layout Düzenlemeleri */
+        .news-list article.double {
+            width: 48%;
+        }
+
+        .news-list article.large {
+            width: 100%;
+        }
+
+        .news-list article.quarter {
+            width: 23%;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -25,79 +194,61 @@
         </div>
     </header>
 
-    <main> <!-- 1120px -->
-        <section class="news-list"> 
-
-            <article class="small-article">
+    <main>
+        <section class="news-list">
+            <!-- İlk Satırda 3 Küçük Bölüm -->
+            <article class="double">
                 <img src="resim1.jpg" alt="">
-                <h3>Marksizm: Toplumun Sınıfsal Yapısını Anlama Yöntemi </h3>
-                <P>Marksizm, Karl Marx ve Friedrich Engels tarafından geliştirilen bir sosyo-ekonomik ve politik teoridir.
-                   Bu teori, tarih boyunca toplumsal gelişimi sınıf çatışmaları üzerinden analiz eder...<a href="#">Devamını oku</a></P>
-                
+                <h3>Marksizm: Toplumun Sınıfsal Yapısını Anlama Yöntemi</h3>
+                <p>Marksizm, Karl Marx ve Friedrich Engels tarafından geliştirilen bir sosyo-ekonomik ve politik teoridir...</p>
             </article>
-
-            <article class="small-article"> <!-- 240.135px image -->
+            <article class="double">
                 <img src="resim2.jpg" alt="">
                 <h3>Sınıf Mücadelesi: Marksizm'in Temel Prensibi</h3>
-                <p>Bu başlık altında, Marksizm’in tarihsel materyalizm
-                   anlayışı ve bu anlayışın toplumsal gelişimi nasıl
-                   şekillendirdiği ele alınabilir...<a href="#">Devamını oku</p>
-                </a>
+                <p>Bu başlık altında, Marksizm’in tarihsel materyalizm anlayışı ve bu anlayışın toplumsal gelişimi nasıl şekillendirdiği ele alınabilir...</p>
             </article>
-
-            <article class="small-article">
-                <img src="resim1.jpg" alt="">
-                <h3>Kapitalizm Eleştirisi: Marksizm'in Ekonomik Teorileri</h3>
-                <p>Bu başlık altında, Marksizm’in kapitalizm üzerindeki eleştirileri,
-                    ekonomik eşitsizlik ve sömürü kavramları ile birlikte tartışılabilir...<a href="#">Devamını oku</a></p>
-                
-            </article>
-            
-            <article class="small-article">
-                <img src="resim2.jpg" alt="">
-                <h3>Marksizm ve Emek Değer Teorisi: Ekonomik Temeller</h3>
-                <p>Bu başlık altında, Marksizm’in emek değer teorisi, mal
-                     ve hizmetlerin değerinin nasıl belirlendiği ve bu teorinin
-                      ekonomik sistemlere etkileri incelenebilir...<a href="#">Devamını oku</a></p>
-                
-            </article>
-
-            <!-- Büyük Article -->
-            <article class="large-article"> 
-                <img src="büyükresim.jpg" alt="" class="img"> <!-- 400.400px image -->
+            <!-- İkinci Satırda 1 Büyük Bölüm -->
+            <article class="large">
+                <img src="büyükresim.jpg" alt="">
                 <h3>Post-Marksizm: Modern Dünyada Marksizm’in Yeniden Yorumlanması</h3>
-                <p>Bu başlık altında, post-marksist düşünürlerin Marksizm’i nasıl yeniden
-                     yorumladığı, günümüz toplumsal hareketleriyle olan bağlantıları ve
-                      Marksizm’in güncel uygulamaları üzerinde durulabilir...<a href="#">Devamını oku</a></p>
-                
+                <p>Post-marksist düşünürler, Marksizm’i nasıl yeniden yorumladığı, günümüz toplumsal hareketleriyle olan bağlantıları...</p>
             </article>
 
-            <article class="half-middle-article">
-                <img src="" alt="" class="img">
-                <h3>Marksizm ve Feminist Teori: Kadınların Sınıf Mücadelesindeki Yeri</h3>
-                <p>Bu başlık altında, Marksizm’in feminist teori ile kesişim noktaları,
-                     kadınların ekonomik ve sosyal mücadeleleri ve toplumsal cinsiyet eşitliği
-                      tartışmaları ele alınabilir...<a href="#">Devamını oku</a></p>
-                
+            <!-- Diğer Satırlarda Karışık Layout -->
+            <article class="quarter">
+                <img src="resim4.jpg" alt="">
+                <h3>Teknoloji ve Marksizm</h3>
+                <p>Teknolojik gelişmelerin toplumsal yapıyı nasıl dönüştürdüğü, Marksist bakış açısıyla nasıl değerlendirilebilir?</p>
             </article>
 
-            <!-- Üçüncü satırda yan yana 2 article -->
-            <article class="middle-article">
-                <h3>Haber Başlığı 6</h3>
-                <p>Kısa haber açıklaması...<a href="#">Devamını oku</a></p>
-                
+            <article class="quarter">
+                <img src="resim5.jpg" alt="">
+                <h3>Sosyalist Devlet ve Ekonomik Planlama</h3>
+                <p>Sosyalist bir devletin nasıl işlediği ve ekonomik planlamanın nasıl yapıldığı üzerine bazı önemli düşünceler...</p>
             </article>
 
-            <article class="middle-article">
-                <h3>Haber Başlığı 7</h3>
-                <p>Kısa haber açıklaması...<a href="#">Devamını oku</a></p>
-                
+            <article class="quarter">
+                <img src="resim6.jpg" alt="">
+                <h3>Marksizm ve Çevre Sorunları</h3>
+                <p>Çevresel krizler ve Marksist perspektifte doğanın kapitalizm tarafından nasıl sömürüldüğü üzerine tartışmalar...</p>
+            </article>
+
+            <article class="quarter">
+                <img src="resim7.jpg" alt="">
+                <h3>Marksizm'in Geleceği</h3>
+                <p>Günümüz toplumsal yapısındaki değişiklikler ışığında, Marksizm'in geleceği üzerine yapılan tartışmalar...</p>
+            </article>
+
+            <article class="quarter">
+                <img src="resim8.jpg" alt="">
+                <h3>Modern Sosyalist Hareketler</h3>
+                <p>Modern sosyalist hareketler ve kapitalizme karşı verilen mücadelelerin etkileri üzerine bazı önemli analizler...</p>
             </article>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Haber Sitesi. Tüm hakları saklıdır.</p>
+        <p>&copy; 2024 Marksist Felsefe. Tüm hakları saklıdır.</p>
     </footer>
 </body>
 </html>
