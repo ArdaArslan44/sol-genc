@@ -154,3 +154,75 @@ footer {
     color: white;
     margin-top: 20px;
 }
+@media screen and (max-width: 768px) {
+    /* Header düzenlemeleri */
+    header {
+        text-align: center;
+    }
+
+    .container {
+        flex-direction: column;
+        padding: 0 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    nav ul li {
+        margin: 0;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+    }
+
+    /* Main içerik düzenlemeleri */
+    main {
+        padding: 10px;
+    }
+
+    .news-list {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .news-list article {
+        width: 100%; /* Mobilde tüm genişliği kapla */
+        padding: 10px;
+    }
+
+    .large-article {
+        width: 100%; /* Mobilde tam genişlik */
+        flex-direction: column;
+    }
+
+    .large-article .img {
+        width: 100%; /* Görseller genişlik açısından esneklik kazandı */
+        height: auto;
+        float: none;
+        margin-bottom: 10px;
+    }
+
+    .half-middle-article {
+        width: 100%;
+    }
+
+    .half-middle-article .img {
+        width: 100%;
+        height: auto;
+    }
+
+    .small-article, 
+    .middle-article {
+        width: 100%; /* Tüm küçük makaleler tam genişlikte */
+    }
+
+    /* Footer düzenlemeleri */
+    footer {
+        font-size: 14px;
+        padding: 15px;
+    }
+}
