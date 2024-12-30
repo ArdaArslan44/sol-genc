@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haber Sitesi</title>
+    <link rel="stylesheet" href="style.css">
     <style>
         * {
             margin: 0;
@@ -21,7 +22,7 @@
         header {
             background-color: #5a738e; 
             color: #ffffff;
-            padding: 15px 0;
+            padding: 10px 0;
         }
 
         .container {
@@ -68,9 +69,10 @@
         }
 
         .news-list {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
             gap: 30px;
+            justify-content: space-between;
         }
 
         .news-list article {
@@ -121,16 +123,16 @@
 
         /* Büyük Makale */
         .large-article {
-            grid-column: span 3;
-            background-color: #eef3f8;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 50%;
             display: flex;
-            gap: 20px;
+            gap: 30px;
+            background-color: #eef3f8;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .large-article img {
+        .large-article .img {
             width: 50%;
             height: auto;
             border-radius: 10px;
@@ -158,7 +160,108 @@
             margin-top: 20px;
         }
 
-        
+        /* Responsive Tasarım */
+        @media screen and (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    .news-list {
+        gap: 20px;
+    }
+
+    .news-list article.double {
+        width: 47%;
+    }
+
+    .news-list article.large {
+        width: 100%;
+    }
+
+    .news-list article.quarter {
+        width: 47%;
+    }
+
+    .large-article {
+        width: 100%;
+        gap: 20px;
+    }
+}
+
+/* Telefon için Medya Sorguları (768px'den küçük) */
+@media screen and (max-width: 767px) {
+    .container {
+        flex-direction: column;
+        padding: 0 10px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 0;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .news-list {
+        gap: 15px;
+    }
+
+    .news-list article.double,
+    .news-list article.large,
+    .news-list article.quarter {
+        width: 100%;
+    }
+
+    .news-list article {
+        padding: 15px;
+    }
+
+    .news-list article h3 {
+        font-size: 18px;
+    }
+
+    .large-article {
+        width: 100%;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .large-article .img {
+        width: 100%;
+    }
+}
+
+        /* Yeni Layout Düzenlemeleri */
+        .news-list article.double {
+            width: 48%;
+        }
+
+        .news-list article.large {
+            width: 100%;
+        }
+
+        .news-list article.quarter {
+            width: 23%;
+        }
     </style>
 </head>
 <body>
@@ -182,58 +285,57 @@
 
     <main>
         <section class="news-list">
-            <!-- İlk Satırda 3 Küçük Bölüm -->
-            <article>
+            <!-- İlk Satırda 2 Küçük Bölüm -->
+            <article class="double">
                 <img src="resim1.jpg" alt="">
                 <h3>Marksizm: Toplumun Sınıfsal Yapısını Anlama Yöntemi</h3>
                 <p>Marksizm, Karl Marx ve Friedrich Engels tarafından geliştirilen bir sosyo-ekonomik ve politik teoridir...</p>
             </article>
-            <article>
+            <article class="double">
                 <img src="resim2.jpg" alt="">
                 <h3>Sınıf Mücadelesi: Marksizm'in Temel Prensibi</h3>
                 <p>Bu başlık altında, Marksizm’in tarihsel materyalizm anlayışı ve bu anlayışın toplumsal gelişimi nasıl şekillendirdiği ele alınabilir...</p>
             </article>
-            <article>
+
+            <!-- İkinci Satırda 1 Büyük Bölüm -->
+            <article class="large">
+                <img src="büyükresim.jpg" alt="">
+                <h3>Post-Marksizm: Modern Dünyada Marksizm’in Yeniden Yorumlanması</h3>
+                <p>Post-marksist düşünürler, Marksizm’i nasıl yeniden yorumladığı, günümüz toplumsal hareketleriyle olan bağlantıları...</p>
+            </article>
+
+            <!-- Diğer Satırlarda Karışık Layout -->
+            <article class="quarter">
                 <img src="resim3.jpg" alt="">
                 <h3>Marksizm ve Ekonomi</h3>
                 <p>Ekonomi ve toplum ilişkileri hakkında daha derinlemesine bir anlayış geliştirmek için Marksizm çok önemli bir perspektife sahiptir...</p>
             </article>
 
-            <!-- İkinci Satırda 1 Büyük Bölüm -->
-            <article class="large-article">
-                <img src="büyükresim.jpg" alt="">
-                <div>
-                    <h3>Post-Marksizm: Modern Dünyada Marksizm’in Yeniden Yorumlanması</h3>
-                    <p>Post-marksist düşünürler, Marksizm’i nasıl yeniden yorumladığı, günümüz toplumsal hareketleriyle olan bağlantıları...</p>
-                </div>
-            </article>
-
-            <!-- Diğer Satırlarda Karışık Layout -->
-            <article>
+            <article class="quarter">
                 <img src="resim4.jpg" alt="">
                 <h3>Teknoloji ve Marksizm</h3>
                 <p>Teknolojik gelişmelerin toplumsal yapıyı nasıl dönüştürdüğü, Marksist bakış açısıyla nasıl değerlendirilebilir?</p>
             </article>
 
-            <article>
+            <article class="quarter">
                 <img src="resim5.jpg" alt="">
                 <h3>Sosyalist Devlet ve Ekonomik Planlama</h3>
                 <p>Sosyalist bir devletin nasıl işlediği ve ekonomik planlamanın nasıl yapıldığı üzerine bazı önemli düşünceler...</p>
             </article>
 
-            <article>
+            <article class="quarter">
                 <img src="resim6.jpg" alt="">
                 <h3>Marksizm ve Çevre Sorunları</h3>
                 <p>Çevresel krizler ve Marksist perspektifte doğanın kapitalizm tarafından nasıl sömürüldüğü üzerine tartışmalar...</p>
             </article>
 
-            <article>
+            <article class="double">
                 <img src="resim7.jpg" alt="">
                 <h3>Marksizm'in Geleceği</h3>
                 <p>Günümüz toplumsal yapısındaki değişiklikler ışığında, Marksizm'in geleceği üzerine yapılan tartışmalar...</p>
             </article>
 
-            <article>
+            <article class="double">
                 <img src="resim8.jpg" alt="">
                 <h3>Modern Sosyalist Hareketler</h3>
                 <p>Modern sosyalist hareketler ve kapitalizme karşı verilen mücadelelerin etkileri üzerine bazı önemli analizler...</p>
