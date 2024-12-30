@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haber Sitesi</title>
-    <link rel="stylesheet" href="style.css">
     <style>
         * {
             margin: 0;
@@ -18,11 +17,13 @@
             background-color: #f7faff;
         }
 
-        /* Header */
         header {
-            background-color: #5a738e; 
+            background-color: #5a738e;
             color: #ffffff;
-            padding: 10px 0;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .container {
@@ -36,29 +37,27 @@
 
         header h1 {
             margin: 0;
+            font-size: 24px;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-        }
-
-        nav ul li {
-            margin: 0 15px;
+            gap: 20px;
         }
 
         nav ul li a {
             color: #ffffff;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 500;
+            transition: all 0.3s ease;
         }
 
         nav ul li a:hover {
-            text-decoration: underline;
+            color: #e0e0e0;
         }
 
-        /* Ana İçerik */
         main {
             max-width: 1200px;
             margin: 20px auto;
@@ -71,87 +70,55 @@
         .news-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 30px;
-            justify-content: space-between;
+            gap: 20px;
         }
 
         .news-list article {
             background-color: #ffffff;
-            color: #000000;
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
         }
 
         .news-list article:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
         }
 
         .news-list article img {
             width: 100%;
-            height: auto;
             border-radius: 5px;
-            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .news-list article.double {
+            width: calc(50% - 10px);
+        }
+
+        .news-list article.large {
+            width: 100%;
+        }
+
+        .news-list article.large img {
+            max-height: 400px;
+        }
+
+        .news-list article.quarter {
+            width: calc(25% - 15px);
         }
 
         .news-list article h3 {
-            margin-bottom: 15px;
-            font-size: 20px;
+            margin: 12px 0;
+            font-size: 18px;
             color: #333333;
-            line-height: 1.4;
         }
 
         .news-list article p {
-            color: #555555;
+            color: #666666;
             font-size: 14px;
-            line-height: 1.4;
-            margin-bottom: 15px;
+            line-height: 1.5;
         }
 
-        .news-list article a {
-            color: #5a738e;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .news-list article a:hover {
-            text-decoration: underline;
-        }
-
-        /* Büyük Makale */
-        .large-article {
-            width: 50%;
-            display: flex;
-            gap: 30px;
-            background-color: #eef3f8;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .large-article .img {
-            width: 50%;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        .large-article h3 {
-            font-size: 24px;
-            color: #333333;
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
-        .large-article p {
-            font-size: 16px;
-            color: #555555;
-            line-height: 1.6;
-        }
-
-        /* Footer */
         footer {
             text-align: center;
             padding: 20px;
@@ -160,107 +127,90 @@
             margin-top: 20px;
         }
 
-        /* Responsive Tasarım */
+        /* Tablet (768px - 1024px) */
         @media screen and (min-width: 768px) and (max-width: 1024px) {
-    .container {
-        padding: 0 15px;
-    }
+            .container {
+                padding: 0 15px;
+            }
 
-    nav ul {
-        gap: 15px;
-    }
+            .news-list article.quarter {
+                width: calc(50% - 10px);
+            }
 
-    nav ul li a {
-        font-size: 16px;
-    }
-
-    main {
-        padding: 15px;
-    }
-
-    .news-list {
-        gap: 20px;
-    }
-
-    .news-list article.double {
-        width: 47%;
-    }
-
-    .news-list article.large {
-        width: 100%;
-    }
-
-    .news-list article.quarter {
-        width: 47%;
-    }
-
-    .large-article {
-        width: 100%;
-        gap: 20px;
-    }
-}
-
-/* Telefon için Medya Sorguları (768px'den küçük) */
-@media screen and (max-width: 767px) {
-    .container {
-        flex-direction: column;
-        padding: 0 10px;
-    }
-
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px 0;
-    }
-
-    nav ul li a {
-        font-size: 16px;
-    }
-
-    main {
-        padding: 10px;
-    }
-
-    .news-list {
-        gap: 15px;
-    }
-
-    .news-list article.double,
-    .news-list article.large,
-    .news-list article.quarter {
-        width: 100%;
-    }
-
-    .news-list article {
-        padding: 15px;
-    }
-
-    .news-list article h3 {
-        font-size: 18px;
-    }
-
-    .large-article {
-        width: 100%;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .large-article .img {
-        width: 100%;
-    }
-}
-
-        /* Yeni Layout Düzenlemeleri */
-        .news-list article.double {
-            width: 48%;
+            .news-list article.large img {
+                max-height: 350px;
+            }
         }
 
-        .news-list article.large {
-            width: 100%;
+        /* Mobil (599px - 767px) */
+        @media screen and (min-width: 599px) and (max-width: 767px) {
+            .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .news-list article.double,
+            .news-list article.quarter {
+                width: 100%;
+            }
+
+            .news-list article.large img {
+                max-height: 300px;
+            }
         }
 
-        .news-list article.quarter {
-            width: 23%;
+        /* Küçük ekranlar (598px ve altı) */
+        @media screen and (max-width: 598px) {
+            header {
+                padding: 10px 0;
+            }
+
+            .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+
+            main {
+                padding: 10px;
+            }
+
+            .news-list {
+                gap: 15px;
+            }
+
+            .news-list article {
+                width: 100% !important;
+                margin: 0;
+            }
+
+            .news-list article img {
+                max-height: 200px;
+            }
+
+            .news-list article.large img {
+                max-height: 250px;
+            }
+
+            .news-list article h3 {
+                font-size: 16px;
+                margin: 8px 0;
+            }
+
+            .news-list article p {
+                font-size: 13px;
+            }
         }
     </style>
 </head>
@@ -285,7 +235,6 @@
 
     <main>
         <section class="news-list">
-            <!-- İlk Satırda 2 Küçük Bölüm -->
             <article class="double">
                 <img src="resim1.jpg" alt="">
                 <h3>Marksizm: Toplumun Sınıfsal Yapısını Anlama Yöntemi</h3>
@@ -294,17 +243,15 @@
             <article class="double">
                 <img src="resim2.jpg" alt="">
                 <h3>Sınıf Mücadelesi: Marksizm'in Temel Prensibi</h3>
-                <p>Bu başlık altında, Marksizm’in tarihsel materyalizm anlayışı ve bu anlayışın toplumsal gelişimi nasıl şekillendirdiği ele alınabilir...</p>
+                <p>Bu başlık altında, Marksizm'in tarihsel materyalizm anlayışı ve bu anlayışın toplumsal gelişimi nasıl şekillendirdiği ele alınabilir...</p>
             </article>
 
-            <!-- İkinci Satırda 1 Büyük Bölüm -->
             <article class="large">
                 <img src="büyükresim.jpg" alt="">
-                <h3>Post-Marksizm: Modern Dünyada Marksizm’in Yeniden Yorumlanması</h3>
-                <p>Post-marksist düşünürler, Marksizm’i nasıl yeniden yorumladığı, günümüz toplumsal hareketleriyle olan bağlantıları...</p>
+                <h3>Post-Marksizm: Modern Dünyada Marksizm'in Yeniden Yorumlanması</h3>
+                <p>Post-marksist düşünürler, Marksizm'i nasıl yeniden yorumladığı, günümüz toplumsal hareketleriyle olan bağlantıları...</p>
             </article>
 
-            <!-- Diğer Satırlarda Karışık Layout -->
             <article class="quarter">
                 <img src="resim3.jpg" alt="">
                 <h3>Marksizm ve Ekonomi</h3>
