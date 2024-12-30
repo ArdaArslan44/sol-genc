@@ -5,106 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haber Sitesi</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #ecf0f1;
+            --accent-color: #e74c3c;
+            --text-color: #2c3e50;
         }
 
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f7faff;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+            margin: 0;
+            padding: 0;
         }
 
         header {
-            background-color: #5a738e;
-            color: #ffffff;
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .container {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
         }
 
         header h1 {
             margin: 0;
-            font-size: 24px;
         }
 
         nav ul {
-            display: flex;
             list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
             gap: 20px;
         }
 
+        nav ul li {
+            margin: 0;
+        }
+
         nav ul li a {
-            color: #ffffff;
+            color: var(--secondary-color);
             text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
-            transition: all 0.3s ease;
         }
 
-        nav ul li a:hover {
-            color: #e0e0e0;
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5em;
         }
 
-        main {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
         }
 
         .news-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 15px;
+            padding: 20px;
         }
 
         .news-list article {
-            background-color: #ffffff;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease;
-        }
-
-        .news-list article:hover {
-            transform: translateY(-5px);
+            background-color: var(--secondary-color);
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            flex: 1 1 calc(50% - 30px);
         }
 
         .news-list article img {
-            width: 100%;
-            border-radius: 5px;
-            object-fit: cover;
-        }
-
-        .news-list article.double {
-            width: calc(50% - 10px);
+            max-width: 100%;
+            height: auto;
         }
 
         .news-list article.large {
-            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex: 1 1 100%;
         }
 
         .news-list article.large img {
+            max-width: 150px;
+            margin-right: 15px;
             max-height: 400px;
         }
 
+        .news-list article.double {
+            flex: 1 1 calc(50% - 30px);
+        }
+
         .news-list article.quarter {
-            width: calc(25% - 15px);
+            flex: 1 1 calc(25% - 30px);
         }
 
         .news-list article h3 {
@@ -127,111 +124,92 @@
             margin-top: 20px;
         }
 
-        /* Tablet (768px - 1024px) */
-        @media screen and (min-width: 768px) and (max-width: 1024px) {
-            .container {
-                padding: 0 15px;
-            }
-
-            .news-list article.quarter {
-                width: calc(50% - 10px);
-            }
-
-            .news-list article.large img {
-                max-height: 350px;
-            }
-        }
-
-        /* Mobil (599px - 767px) */
-        @media screen and (min-width: 599px) and (max-width: 767px) {
-            .container {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 10px;
-            }
-
-            .news-list article.double,
-            .news-list article.quarter {
-                width: 100%;
-            }
-
-            .news-list article.large img {
-                max-height: 300px;
-            }
-        }
-
-        /* Küçük ekranlar (598px ve altı) */
         @media screen and (max-width: 598px) {
             header {
-                padding: 10px 0;
-            }
-
-            .container {
                 flex-direction: column;
-                gap: 10px;
+                text-align: center;
             }
 
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 8px;
+            nav {
+                display: none;
             }
 
-            main {
-                padding: 10px;
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger-menu {
+                display: flex;
             }
 
             .news-list {
-                gap: 15px;
+                flex-direction: column;
+                padding: 10px;
             }
 
             .news-list article {
-                width: 100% !important;
-                margin: 0;
+                flex: 1 1 100%;
             }
 
-            .news-list article img {
-                max-height: 200px;
+            .news-list article.large {
+                flex-direction: column;
+                align-items: flex-start;
             }
 
             .news-list article.large img {
-                max-height: 250px;
-            }
-
-            .news-list article h3 {
-                font-size: 16px;
-                margin: 8px 0;
-            }
-
-            .news-list article p {
-                font-size: 13px;
+                max-width: 100%;
+                margin: 0 0 10px 0;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <div class="logo">
-                <h1>Marksist Felsefe</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#">ANA SAYFA</a></li>
-                    <li><a href="#">DÜNYA</a></li>
-                    <li><a href="#">EKONOMİ</a></li>
-                    <li><a href="#">SPOR</a></li>
-                    <li><a href="#">TEKNOLOJİ</a></li>
-                    <li><a href="#">İLETİŞİM</a></li>
-                </ul>
-            </nav>
-        </div>
+        <h1>Marksist Felsefe</h1>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <nav class="hamburger-menu">
+            <ul>
+                <li><a href="#home">Ana Sayfa</a></li>
+                <li><a href="#about">Hakkında</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </nav>
     </header>
+    ...
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.hamburger-menu');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'flex';
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Marksist Felsefe</h1>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <nav class="hamburger-menu">
+            <ul>
+                <li><a href="#home">Ana Sayfa</a></li>
+                <li><a href="#about">Hakkında</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+    ...
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.hamburger-menu');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'flex';
+            }
+        }
+    </script>
 
     <main>
         <section class="news-list">
